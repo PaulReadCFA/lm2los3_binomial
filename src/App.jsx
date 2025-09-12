@@ -207,10 +207,7 @@ export default function AccessibleOptionPricing() {
 
       <main id="main-content" className="max-w-6xl mx-auto px-4 py-8">
         {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-serif text-slate-800 mb-2">One-Period Binomial Option Pricing</h1>
-          <p className="text-gray-600">Risk-neutral valuation of European options using the binomial tree model</p>
-        </div>
+        
 
         <Card title="Binomial Option Pricing Calculator">
           {/* Input Parameters */}
