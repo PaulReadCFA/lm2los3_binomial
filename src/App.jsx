@@ -337,7 +337,7 @@ export default function AccessibleOptionPricing() {
                   title="Call Option Price (C₀)"
                   value={`$${calc.C0.toFixed(2)}`}
                   subtitle="fair value of the call option at t=0"
-                  description={`Risk-neutral probability: ${(calc.p * 100).toFixed(2)}%`}
+                  description={`Payoffs: Up-state $${calc.Cu.toFixed(2)}, Down-state $${calc.Cd.toFixed(2)}`}
                   isValid={true}
                 />
                 <ResultCard
@@ -353,7 +353,7 @@ export default function AccessibleOptionPricing() {
               <div className="sr-only">
                 <h3>Asset Price Evolution</h3>
                 <table>
-                  <caption>Binomial tree showing asset price evolution from current time to maturity</caption>
+                  <caption>Binomial tree showing asset price evolution from current time to expiration</caption>
                   <thead>
                     <tr>
                       <th scope="col">Time Period</th>
@@ -368,7 +368,7 @@ export default function AccessibleOptionPricing() {
                       <td>$${inputs.S0.toFixed(2)}</td>
                     </tr>
                     <tr>
-                      <th scope="row">t = 1 (Maturity)</th>
+                      <th scope="row">t = 1 (Expiration)</th>
                       <td>$${inputs.Su.toFixed(2)}</td>
                       <td>$${inputs.Sd.toFixed(2)}</td>
                     </tr>
@@ -583,12 +583,10 @@ export default function AccessibleOptionPricing() {
               {/* Educational Context */}
               <div className="mt-8 p-4 bg-gray-50 rounded-lg text-sm text-gray-700">
                 <h4 className="font-semibold mb-2">Binomial Option Pricing Model:</h4>
-                <p>
-                  This model values options using risk-neutral valuation. The risk-neutral probability (p = {(calc.p * 100).toFixed(2)}%) 
-                  is calculated so that the expected return on the underlying asset equals the risk-free rate. Option prices are then 
-                  the discounted expected payoffs under this probability measure. This approach ensures arbitrage-free pricing 
-                  consistent with the Black-Scholes framework.
-                </p>
+               <p>
+  This model values options by calculating payoffs at expiration and discounting them back to present value 
+  using the risk-free rate. The binomial tree shows how option values evolve based on potential asset price movements.
+</p>
               </div>
             </div>
           )}
